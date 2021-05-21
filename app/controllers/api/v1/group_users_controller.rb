@@ -1,4 +1,4 @@
-class GroupUsersController < ApplicationController
+class Api::V1::GroupUsersController < ApplicationController
   before_action :set_group_user, only: [:show, :update, :destroy]
 
   # GET /group_users

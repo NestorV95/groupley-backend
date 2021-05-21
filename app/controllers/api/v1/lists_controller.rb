@@ -1,4 +1,5 @@
-class ListsController < ApplicationController
+class Api::V1::ListsController < ApplicationController
+  skip_before_action :authorized
   before_action :set_list, only: [:show, :update, :destroy]
 
   # GET /lists
