@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       resources :list_items   
       resources :group_users
       resources :groups
+      get '/loggedin', to: 'users#show'
       post '/signup', to: 'users#create'
       post '/signin', to: 'auth#create'
 
