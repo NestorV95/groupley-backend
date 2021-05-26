@@ -26,8 +26,8 @@
         <!-- users can be invited to and join group -->
         <!-- group can have many lists (for tasks, grocieries, etc) -->
     ##----------------------------------------- List ----------------------------------------##
-        lists can be created by group memebers 
-        lists can be edited by group memebers 
+        <!-- lists can be created by group memebers -->
+        <!-- lists can be edited by group memebers  -->
         lists can be deleted by group memebers
 ------------------------------------------ STRETCH GOALS -------------------------------------------
     ##--------------------------------- Model Relationships ---------------------------------##

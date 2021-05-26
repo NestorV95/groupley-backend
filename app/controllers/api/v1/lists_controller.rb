@@ -2,7 +2,7 @@ class Api::V1::ListsController < ApplicationController
   before_action :set_list, only: [:show, :update, :destroy]
   before_action :logged_in?
 
-  # GET /lists
+  # GET groups/:group_id/lists
   def index
     id = permit_group_id['group_id'].to_i
 
@@ -11,40 +11,42 @@ class Api::V1::ListsController < ApplicationController
     render json: lists
   end
 
-  # GET /lists/1
+  # GET /groups/:group_id/lists/:id
   def show
-    render json: @list
+    render json: {list: ListSerializer.new(list)}
   end
 
-  # POST /lists
+  # POST /groups/:group_id/lists
   def create
-    @list = List.new(list_params)
+    list = List.create(list_params)
 
-    if @list.save
-      render json: @list, status: :created, location: @list
+    if list.valid?
+      render json: {list: ListSerializer.new(list)}, status: :created
     else
-      render json: @list.errors, status: :unprocessable_entity
+      render json: list.errors, status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /lists/1
+  # PATCH/PUT /groups/:group_id/lists/:id
   def update
-    if @list.update(list_params)
-      render json: @list
+    list = List.find(params[:id])
+    if list.update(list_params)
+      render json: {list: ListSerializer.new(list)}, status: :accepted
     else
-      render json: @list.errors, status: :unprocessable_entity
+      render json: list.errors, status: :unprocessable_entity
     end
   end
 
-  # DELETE /lists/1
+  # DELETE /groups/:group_id/lists/:id
   def destroy
-    @list.destroy
+    list = List.find(params[:id])
+    list.destroy
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_list
-      @list = List.find(params[:id])
+      list = List.find(params[:id])
     end
 
     def permit_group_id
