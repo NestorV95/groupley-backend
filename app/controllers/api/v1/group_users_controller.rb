@@ -4,7 +4,6 @@ class Api::V1::GroupUsersController < ApplicationController
   # POST /group_users
   def create
     group_user = GroupUser.create(group_user_params)
-
     if group_user.valid?
       render json: {group_user: GroupUserSerializer.new(group_user)}, status: :created
     else
@@ -19,7 +18,6 @@ class Api::V1::GroupUsersController < ApplicationController
   end
 
   private
-
     # Only allow a list of trusted parameters through.
     def group_user_params
       params.require(:group_user).permit(:group_id, :user_id)

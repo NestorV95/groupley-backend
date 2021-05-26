@@ -7,13 +7,11 @@ class Api::V1::GroupsController < ApplicationController
   def index
     groups = Group.all
     render json: { groups: GroupSerializer.new(groups)}, status: :accepted
-
   end
-
 
   # GET /groups/1
   def show
-    render json: group
+    render json: {group: GroupSerializer.new(group)}, status: :accepted
   end
 
   # POST /groups
@@ -30,10 +28,7 @@ class Api::V1::GroupsController < ApplicationController
   # PATCH/PUT /groups/1
   def update
     group = Group.find(params[:id].to_i)
-
-    # byebug
     if group.update(group_params)
-      # byebug
       render json: {group: GroupSerializer.new(group)}, status: :accepted
     else
       render json: group.errors, status: :unprocessable_entity
@@ -47,11 +42,6 @@ class Api::V1::GroupsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    # def id
-    #   permitted = params.require.permit(:id) 
-    #   permitted['id'].to_i
-    # end
-
     def set_group
       group = Group.find(params[:id])
     end

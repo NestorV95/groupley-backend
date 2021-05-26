@@ -28,7 +28,7 @@
     ##----------------------------------------- List ----------------------------------------##
         <!-- lists can be created by group memebers -->
         <!-- lists can be edited by group memebers  -->
-        lists can be deleted by group memebers
+        <!-- lists can be deleted by group memebers -->
 ------------------------------------------ STRETCH GOALS -------------------------------------------
     ##--------------------------------- Model Relationships ---------------------------------##
         group -< calander -< events        

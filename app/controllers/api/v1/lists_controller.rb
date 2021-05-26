@@ -5,9 +5,7 @@ class Api::V1::ListsController < ApplicationController
   # GET groups/:group_id/lists
   def index
     id = permit_group_id['group_id'].to_i
-
     lists = List.find_by_group_id(id)
-
     render json: lists
   end
 
@@ -19,7 +17,6 @@ class Api::V1::ListsController < ApplicationController
   # POST /groups/:group_id/lists
   def create
     list = List.create(list_params)
-
     if list.valid?
       render json: {list: ListSerializer.new(list)}, status: :created
     else

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
       patch '/update', to: 'users#update'
       delete '/terminate', to: 'users#destroy'
 
-      get 'user/groups', to: 'users#groups'
+      # get 'user/groups', to: 'users#groups'
 
       resources :group_users, only: [:create, :destroy]
 

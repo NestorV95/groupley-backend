@@ -1,24 +1,15 @@
 class Api::V1::UsersController < ApplicationController
   skip_before_action :authorized, only: [:create]
-  before_action :logged_in?, only: [:show, :groups, :update, :destroy]
+  before_action :logged_in?, only: [:show, :update, :destroy]
 
+  # GET /loggedin
   def show
     render json: { user: UserSerializer.new(current_user) }, status: :accepted
-
   end
 
-  # def groups 
-  #   groups = current_user.groups()
-  #   # groups.each{ |group| group[users]=group.group_users.each{ |gu| gu.user}}
-  #   # byebug
-
-
-  #   render json: { groups: groups }, status: :accepted
-  # end
-
+  # POST /signup
   def create
     user = User.create(user_params)
-
     if user.valid?
       token = encode_token(user_id: user.id)
       render json: {user: UserSerializer.new(user), jwt: token}, status: :created 
@@ -27,6 +18,7 @@ class Api::V1::UsersController < ApplicationController
     end
   end
 
+  # PATCH /update
   def update
     if current_user.update(user_params)
       render json: { user: UserSerializer.new(current_user) }, status: :accepted
@@ -35,6 +27,7 @@ class Api::V1::UsersController < ApplicationController
     end
   end
 
+  # DELETE /terminate
   def destroy 
     if current_user
       current_user.destroy
