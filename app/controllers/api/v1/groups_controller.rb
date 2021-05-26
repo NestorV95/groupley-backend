@@ -18,10 +18,10 @@ class Api::V1::GroupsController < ApplicationController
 
   # POST /groups
   def create
-    group = Group.new(group_params)
+    group = Group.create(group_params)
 
-    if group.save
-      render json: group, status: :created, location: group
+    if group.valid?
+      render json: {group: GroupSerializer.new(group)}, status: :created
     else
       render json: group.errors, status: :unprocessable_entity
     end
