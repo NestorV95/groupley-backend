@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2021_05_19_154516) do
   create_table "groups", force: :cascade do |t|
     t.string "name"
     t.string "image", default: "https://static.thenounproject.com/png/446003-200.png"
+    t.string "code"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

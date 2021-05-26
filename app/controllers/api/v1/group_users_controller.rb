@@ -1,48 +1,24 @@
 class Api::V1::GroupUsersController < ApplicationController
-  before_action :set_group_user, only: [:show, :update, :destroy]
-
-  # GET /group_users
-  def index
-    @group_users = GroupUser.all
-
-    render json: @group_users
-  end
-
-  # GET /group_users/1
-  def show
-    render json: @group_user
-  end
+  before_action :logged_in?
 
   # POST /group_users
   def create
-    @group_user = GroupUser.new(group_user_params)
+    group_user = GroupUser.create(group_user_params)
 
-    if @group_user.save
-      render json: @group_user, status: :created, location: @group_user
+    if group_user.valid?
+      render json: {group_user: GroupUserSerializer.new(group_user)}, status: :created
     else
-      render json: @group_user.errors, status: :unprocessable_entity
-    end
-  end
-
-  # PATCH/PUT /group_users/1
-  def update
-    if @group_user.update(group_user_params)
-      render json: @group_user
-    else
-      render json: @group_user.errors, status: :unprocessable_entity
+      render json: group_user.errors, status: :unprocessable_entity
     end
   end
 
   # DELETE /group_users/1
   def destroy
-    @group_user.destroy
+    group_user = GroupUser.find_by(id: params[:id])
+    group_user.destroy
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_group_user
-      @group_user = GroupUser.find(params[:id])
-    end
 
     # Only allow a list of trusted parameters through.
     def group_user_params

@@ -1,4 +1,3 @@
 class ListItemSerializer < ActiveModel::Serializer
-  belongs_to :list
-  attributes :id, :list_id, :content
+  attributes :id, :content
 end

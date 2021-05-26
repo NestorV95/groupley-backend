@@ -1,12 +1,14 @@
 class Api::V1::ListsController < ApplicationController
-  skip_before_action :authorized
   before_action :set_list, only: [:show, :update, :destroy]
+  before_action :logged_in?
 
   # GET /lists
   def index
-    @lists = List.all
+    id = permit_group_id['group_id'].to_i
 
-    render json: @lists
+    lists = List.find_by_group_id(id)
+
+    render json: lists
   end
 
   # GET /lists/1
@@ -45,8 +47,11 @@ class Api::V1::ListsController < ApplicationController
       @list = List.find(params[:id])
     end
 
+    def permit_group_id
+      params.permit(:group_id) 
+    end
     # Only allow a list of trusted parameters through.
     def list_params
-      params.require(:list).permit(:group_id, :title)
+      params.require(:list).permit(:group, :title, :list_items, :group_id)
     end
 end

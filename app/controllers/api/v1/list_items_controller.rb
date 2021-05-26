@@ -1,6 +1,6 @@
 class Api::V1::ListItemsController < ApplicationController
-  skip_before_action :authorized
   before_action :set_list_item, only: [:show, :update, :destroy]
+  before_action :logged_in?
 
   # GET /list_items
   def index
@@ -47,6 +47,6 @@ class Api::V1::ListItemsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def list_item_params
-      params.require(:list_item).permit(:list_id, :content)
+      params.require(:list_item).permit(:list, :content, :list_items)
     end
 end

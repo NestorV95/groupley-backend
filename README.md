@@ -20,13 +20,13 @@ GG      GG  RR    RR    OO      OO  UU      UU  PP          LL          EE      
     ##---------------------------------------- User -----------------------------------------##
         <!-- user can create account  -->
         <!-- user can login -->
-        user can edit account details
-        user can delete account
+        <!-- user can edit account details -->
+        <!-- user can delete account -->
     ##---------------------------------------- Group ----------------------------------------##
         group can be created
         group details can be created  
-        users can be invited to and join group
-        group can have many lists (for tasks, grocieries, etc)
+        <!-- users can be invited to and join group -->
+        <!-- group can have many lists (for tasks, grocieries, etc) -->
     ##--------------------------------------- Calander --------------------------------------##
         calander can be viewed by group members
         calander displays events
