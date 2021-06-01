@@ -14,8 +14,8 @@
     4.) As a user, My roommate and I can keep track of our monthly expenses.  
 -------------------------------------------- MVP GOALS ---------------------------------------------
     ##--------------------------------- Model Relationships ---------------------------------##
-        group -< membership >- user 
-        group -< lists
+        <!-- group -< membership >- user  -->
+        <!-- group -< lists -->
     ##---------------------------------------- User -----------------------------------------##
         <!-- user can create account  -->
         <!-- user can login -->
@@ -56,6 +56,13 @@
         polls can be created 
         users can participate in polls
 --------------------------------------- TRIPLE STRETCH GOALS ---------------------------------------
+     ##------------------------------ Added Model Relationships ------------------------------##
+        group -< chat -< comments >- user 
+        group -< polls -< votes >- user  
+    ##---------------------------------------- Polls ----------------------------------------##
+        polls can be created 
+        users can participate in polls
+------------------------------------- QUADRUPLE STRETCH GOALS --------------------------------------        
     ##------------------------------ Added Model Relationships ------------------------------##
         group -< budget 
         budget -< funds 
@@ -65,5 +72,6 @@
         budget can be used to manage group's expenses
         budget can be used to manage user's contributions
         budget will display graphs that represent data related to budget
+------------------------------------- QUINTUPLE STRETCH GOALS -------------------------------------- 
     ##-------------------------------------- Forecast ---------------------------------------##
         make a call to a weather api abd 
