@@ -43,21 +43,12 @@
 -------------------------------------- DOUBLE STRETCH GOALS ----------------------------------------
     ##------------------------------ Added Model Relationships ------------------------------##
         group -< chat -< comments >- user 
-        group -< polls -< votes >- user  
-    ##---------------------------------------- User -----------------------------------------##
-        user can have private tasks
-        user can have private events
-        user can recieve custom reminders/notifications for events.
-    ##---------------------------------------- Group ----------------------------------------##
+    ##---------------------------------------- Chat -----------------------------------------##
         group has chat 
         users can comment in chat 
         users can react to comments in chat
-    ##---------------------------------------- Polls ----------------------------------------##
-        polls can be created 
-        users can participate in polls
 --------------------------------------- TRIPLE STRETCH GOALS ---------------------------------------
      ##------------------------------ Added Model Relationships ------------------------------##
-        group -< chat -< comments >- user 
         group -< polls -< votes >- user  
     ##---------------------------------------- Polls ----------------------------------------##
         polls can be created 
@@ -72,6 +63,10 @@
         budget can be used to manage group's expenses
         budget can be used to manage user's contributions
         budget will display graphs that represent data related to budget
-------------------------------------- QUINTUPLE STRETCH GOALS -------------------------------------- 
+------------------------------------- QUINTUPLE STRETCH GOALS --------------------------------------
+    ##---------------------------------------- User -----------------------------------------##
+        user can have private tasks
+        user can have private events
+        user can recieve custom reminders/notifications for events.
     ##-------------------------------------- Forecast ---------------------------------------##
         make a call to a weather api abd 

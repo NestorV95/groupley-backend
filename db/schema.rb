@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2021_05_19_154516) do
   create_table "list_items", force: :cascade do |t|
     t.integer "list_id"
     t.string "content"
+    t.boolean "completion", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

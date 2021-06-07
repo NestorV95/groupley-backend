@@ -16,8 +16,9 @@ Rails.application.routes.draw do
 
       resources :groups do
         resources :lists 
-
       end
+
+      resources :list_items, only: [:create, :update,]
   
       
 

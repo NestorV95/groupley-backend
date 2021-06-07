@@ -4,8 +4,8 @@ class Api::V1::GroupsController < ApplicationController
 
   # GET /groups
   def index
-    groups = Group.all
-    render json: { groups: GroupSerializer.new(groups)}, status: :accepted
+    @groups = Group.all
+    render json: @groups, status: :accepted
   end
 
   # GET /groups/1
@@ -45,6 +45,7 @@ class Api::V1::GroupsController < ApplicationController
     def set_group
       group = Group.find(params[:id])
     end
+
 
     # Only allow a list of trusted parameters through.
     def group_params
